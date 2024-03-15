@@ -5,9 +5,10 @@ import MarkerClusterGroup from "react-leaflet-cluster";
 import { Icon, divIcon, point } from "leaflet";
 import React from "react";
 import axios from "axios"; 
+import { URL_LIVELLO } from "../../apis/api";
 
 
-export default function Markers(){
+export default function Markers(props){
     const [markers, setMarkers] = React.useState([]);
     const [loading, setLoading] = React.useState(false); 
 
@@ -28,14 +29,10 @@ export default function Markers(){
 
     React.useEffect(() => {
         const loadPost = async () => { 
-            // Till the data is fetch using API 
-            // the Loading page will show. 
             setLoading(true); 
   
-            // Await make wait until that 
-            // promise settles and return its result 
             const response = await axios.get( 
-                "https://dati.venezia.it/sites/default/files/dataset/opendata/livello.json"
+                props.URL
             ); 
   
             console.log(response.data)
@@ -46,10 +43,7 @@ export default function Markers(){
                 }                
             }))
 
-            // After fetching data stored it in posts state. 
             console.log(response.data); 
-  
-            // Closed the loading page 
             setLoading(false); 
         }; 
   
