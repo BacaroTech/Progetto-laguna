@@ -2,14 +2,16 @@ import "../../styles.css";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, LayersControl } from "react-leaflet";
 import Markers from "../marker/markerComponent";
-import { map } from "leaflet";
-import { URL_LIVELLO, URL_ONDE_LAGUNA, URL_PRESSIONE, URL_VENTO } from "../../apis/api";
+import { URL_LIVELLO, URL_PRESSIONE, URL_TEMP_ACQUA, URL_TEMP_ARIA, URL_UMIDITA } from "../../apis/api";
 
 export default function Map() {
 
-  let MapLayerNameURL = [
+  let MapLayerNameURLSpacial = [
     ["Livello idrologico", URL_LIVELLO, true],  
     ["Livello pressione", URL_PRESSIONE, false],  
+    ["Temperatura acqua", URL_TEMP_ACQUA, false],
+    ["Temperatura aria", URL_TEMP_ARIA, false],
+    ["Umidità", URL_UMIDITA, false]
   ]
 
   return (
@@ -19,10 +21,15 @@ export default function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LayersControl position="topright"  >
-        {MapLayerNameURL.map(layerMap => 
+        {MapLayerNameURLSpacial.map(layerMap => 
+        layerMap[2] ? 
+        <LayersControl.Overlay name={layerMap[0]} checked>
+          <Markers URL={layerMap[1]} type={layerMap[0]}></Markers>
+        </LayersControl.Overlay> :
         <LayersControl.Overlay name={layerMap[0]}>
-          <Markers URL={layerMap[1]}></Markers>
-        </LayersControl.Overlay>)}
+        <Markers URL={layerMap[1]} type={layerMap[0]}></Markers>
+      </LayersControl.Overlay> 
+        )}
       </LayersControl>
     </MapContainer>
   );
