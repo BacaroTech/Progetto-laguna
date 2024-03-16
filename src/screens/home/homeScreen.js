@@ -3,9 +3,9 @@ import Map from "../../components/map/mapComponent";
 
 export default function Home() {
   return (
-    <>
-    <Header></Header>
-    <Map></Map>
-    </>
+    <section>
+      <Header></Header>
+      <Map></Map>
+    </section>
   );
 }

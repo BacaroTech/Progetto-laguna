@@ -7,6 +7,9 @@ const URL_UMIDITA = "https://dati.venezia.it/sites/default/files/dataset/opendat
 const URL_TEMP_ARIA = "https://dati.venezia.it/sites/default/files/dataset/opendata/temparia.json";
 const URL_ONDE_LAGUNA = "https://dati.venezia.it/sites/default/files/dataset/opendata/onde_laguna.json";
 const URL_ONDE_MARE = "https://dati.venezia.it/sites/default/files/dataset/opendata/onde_mare.json";
+const URL_MAREA_ASTRONOMICA_AGR = "http://dati.venezia.it/sites/default/files/dataset/opendata/as2024min.json";
+const URL_MAREA_ASTRONOMICA_GOLFO_AGR = "https://dati.venezia.it/sites/default/files/dataset/opendata/ascnr2024min.json"
 
 export {URL_LIVELLO, URL_ONDE_LAGUNA, URL_ONDE_MARE, URL_PRESSIONE, 
-    URL_SOLE, URL_TEMP_ACQUA, URL_TEMP_ARIA, URL_UMIDITA, URL_VENTO }
+    URL_SOLE, URL_TEMP_ACQUA, URL_TEMP_ARIA, URL_UMIDITA, URL_VENTO,
+    URL_MAREA_ASTRONOMICA_AGR, URL_MAREA_ASTRONOMICA_GOLFO_AGR }
