@@ -2,12 +2,8 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
-    Title,
     Tooltip,
     Filler,
-    Legend,
     BarElement,
 } from 'chart.js';
 import axios from "axios"; 
@@ -63,16 +59,38 @@ export default function SingleGraph(props) {
         let myDatas = [];
         let myLabes = [];
 
-        console.log(response.data)
+        //console.log(response.data)
         response.data.map(e => {
             switch (props.URL[1]) {
                 case "Livello Idrico":
-                    myDatas.push((e.valore).replace(" m", ""));
+                    if (e.valore)
+                        myDatas.push((e.valore).replace(" m", ""));
                     myLabes.push(e.stazione);
                     break;
-                case "Onde Laguna":
-                    myDatas.push((e.VALORE).split(" ")[1].split(" ")[0]);
-                    myLabes.push(e.STAZIONE);
+                case "Livello del vento":
+                    if(e.valore)
+                        myDatas.push((e.valore).split(" ")[0]);
+                    myLabes.push(e.stazione);
+                    break;
+                case "Livello di pressione":
+                    if(e.valore)
+                        myDatas.push((e.valore).split(" ")[0]);
+                    myLabes.push(e.stazione);
+                    break;
+                case "Livello di umidità":
+                    if(e.valore)
+                        myDatas.push((e.valore).split(" ")[0]);
+                    myLabes.push(e.stazione);
+                    break;
+                case "Livello di sole":
+                    //console.log(e.valore)
+                    if(e.valore){
+                        let v = e.valore;
+                        if (v < 0)
+                            v = 0
+                        myDatas.push((v).split(" ")[1]);
+                    }
+                    myLabes.push(e.stazione);
                     break;
                 default:
                     break;
@@ -82,7 +100,7 @@ export default function SingleGraph(props) {
         setDatas(myDatas);
         setLabels(myLabes);
 
-        console.log(response.data); 
+        //console.log(response.data); 
         setLoading(false); 
     }
 

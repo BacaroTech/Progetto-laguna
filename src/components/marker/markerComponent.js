@@ -101,13 +101,13 @@ export default function Markers(props){
             props.URL
         ); 
 
-        console.log(response.data)
+        //console.log(response.data)
         setMarkers(response.data.map(sensor => {
             return createMarker(sensor);
                            
         }))
 
-        console.log(response.data); 
+        //console.log(response.data); 
         setLoading(false); 
     };
 

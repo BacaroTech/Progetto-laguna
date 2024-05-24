@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function MenuSX(props){
     return(
-        <section className="">
+        <section className="hidden">
             <h2 className="pl-5 py-6 text-3xl border-r-2 text-center">Lista di grafici</h2>
             <div className="border-r-2 h-full">
                 {props.list.map(elem => 
