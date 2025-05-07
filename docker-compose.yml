@@ -1,0 +1,25 @@
+
+version: '3.8'
+
+services:
+  progettolagunadb:
+    container_name: progettolagunadb
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: laguna
+    ports:
+      - "5432:5432"
+    volumes:
+      - progettolaguna-db-data:/var/lib/postgresql/data
+    networks:
+      - progettolaguna-network
+    restart: unless-stopped 
+
+volumes:
+  progettolaguna-db-data:
+
+networks:
+  progettolaguna-network:
+    driver: bridge
